@@ -8,19 +8,19 @@ have subscribed to logs. The last one subscriber3 have subscribered to both logs
 
 Steps to follow - 
 1. To run the app first make capped collection in mongodb explicitaly -
-	db.createCollection( "collection name", { capped: true, size: 100000 } );
+	* db.createCollection( "collection name", { capped: true, size: 100000 } );
 
 Now go to folder- example 	
 
-2. npm init // to creat package.json file which will help to track the dependencies.	  
+2. * npm init // to creat package.json file which will help to track the dependencies.	  
 
-3. npm install mongoose --save // to install mongoose which we will use as wrapper for DB.
+3. * npm install mongoose --save // to install mongoose which we will use as wrapper for DB.
 
-4. node publish.js // run publisher and it will start adding to db
+4. * node publish.js // run publisher and it will start adding to db
 
 In another terminal run
 
-5. node subscriber.js // choose any subscriber you want to run  .
+5. * node subscriber.js // choose any subscriber you want to run  .
 
 Subscriber terminal will start showing the data which will be added by Publish.js 
 
