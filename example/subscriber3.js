@@ -4,33 +4,6 @@
 var db = new mongo.Db('pubsub', server);
 
 
-// var mongoose=require("mongoose");
-
-
-
-
-
-
-// mongoose.connect("localhost:27017/pubsub");
-
-
-
-// // mongoose.connection.on('open', function (ref) {
-//     function find (collec, query, callback) {
-//       console.log("inside function");
-
-//         mongoose.connection.db.collection(collec, function (err, collection) {
-              
-//         collection.find('messages', function (err, docs) {
-//                 if(err) console.log(err);
-//                 else
-//                 console.log(doc);
-//             });
-//       });
-//     }
-
-// find();
-// // });
 
 db.open(function(err) {
    if (err) throw err;
@@ -40,8 +13,10 @@ db.open(function(err) {
             
                 var cursor=collection.find({},{tailable:true, await_data:true, numberOfRetries:-1});
                 cursor.stream()
+
   .on('data', function(doc){
-    console.log(doc);
+    console.log("data for messages");
+    console.log(doc.messages);
   })
   .on('error', function(err){
     // handle error
@@ -58,8 +33,9 @@ db.open(function(err) {
             
                 var cursor=collection.find({},{tailable:true, await_data:true, numberOfRetries:-1});
                 cursor.stream()
-  .on('data', function(doc){
-    console.log(doc);
+  .on('data', function(data){
+    console.log("data for logs");
+    console.log(data.foo);
   })
   .on('error', function(err){
     // handle error
